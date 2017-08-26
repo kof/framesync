@@ -3,10 +3,14 @@
   "version": "2.0.0",
   "description": "A tiny frame scheduler for performantly batching reads and renders",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "types": "src/index.d.ts",
+  "files": [
+    "lib",
+    "src/index.d.ts"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "tsc"
+    "prepublishOnly": "tsc"
   },
   "repository": {
     "type": "git",

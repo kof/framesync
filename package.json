@@ -1,0 +1,26 @@
+{
+  "name": "framesync",
+  "version": "2.0.0",
+  "description": "A tiny frame scheduler for performantly batching reads and renders",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Popmotion/framesync.git"
+  },
+  "keywords": [
+    "popmotion",
+    "animation",
+    "raf"
+  ],
+  "author": "Matt Perry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Popmotion/framesync/issues"
+  },
+  "homepage": "https://github.com/Popmotion/framesync#readme"
+}

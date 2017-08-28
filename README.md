@@ -1,6 +1,8 @@
 # Framesync
 
-A tiny frame scheduler for performantly batching reads and renders. Segregating actions that read and write to the DOM will avoid [layout thrashing](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing).
+A tiny frame scheduler for performantly batching reads and renders.
+
+Segregating actions that read and write to the DOM will avoid [layout thrashing](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing).
 
 ## Install
 

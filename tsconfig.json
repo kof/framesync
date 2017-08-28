@@ -10,12 +10,15 @@
     "target": "es5",
     "rootDir": "src",
     "outDir": "lib",
-    "watch": true,
+    "watch": false,
     "baseUrl": "src/",
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src/**/*"
+  ],
+  "exclude": [
+    "src/_tests"
   ]
 }

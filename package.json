@@ -9,6 +9,7 @@
     "src/index.d.ts"
   ],
   "scripts": {
+    "watch": "tsc -w",
     "lint": "tslint -c tslint.json 'src/**/*.{ts}'",
     "test": "jest",
     "prepublish": "npm run lint && tsc"

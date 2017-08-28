@@ -24,7 +24,10 @@ Developers can set any function to run at any of these steps using the `on` and 
 - `onFrameRender`, `cancelOnFrameRender`
 - `onFrameEnd`, `cancelOnFrameEnd`
 
-`timeSinceLastFrame` and `currentFrameTimestamp` methods provide frame-locked time measurements.
+Framesync also exports some time-measurement methods:
+- `currentTime`: The current time as measured by the host platform's most accurate `now` function.
+- `currentFrameTime`: The time the current `requestAnimationFrame` was initiated.
+- `timeSinceLastFrame`: The duration between the previous frame and the current `currentFrameTime`
 
 ### Example
 

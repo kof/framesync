@@ -55,4 +55,4 @@ export const cancelOnFrameRender = frameRender.cancel;
 export const cancelOnFrameEnd = frameEnd.cancel;
 
 export const timeSinceLastFrame = () => elapsed;
-export const currentFrameTimestamp = () => currentFramestamp;
+export const currentFrameTime = () => currentFramestamp;

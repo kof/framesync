@@ -11,7 +11,7 @@
   "scripts": {
     "lint": "tslint -c tslint.json 'src/**/*.{ts}'",
     "test": "jest",
-    "prepublishOnly": "npm run lint && tsc"
+    "prepublish": "npm run lint && tsc"
   },
   "repository": {
     "type": "git",

@@ -38,7 +38,7 @@ import {
   timeSinceLastFrame,
   onFrameStart,
   cancelFrameStart
-} from 'popmotion';
+} from 'framesync';
 
 function logTimeSinceLastFrame() {
   console.log(timeSinceLastFrame());

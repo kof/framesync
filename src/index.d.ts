@@ -1,4 +1,4 @@
-export function currentFrameTimestamp(): number;
+export function currentFrameTime(): number;
 export function currentTime(): number;
 export function timeSinceLastFrame(): number;
 export function onFrameStart(callback: Function): void;

@@ -3,7 +3,7 @@
  */
 const hasRAF = (typeof window !== 'undefined' && window.requestAnimationFrame) ? true : false;
 
-let onNextFrame;
+let onNextFrame: (callback: Function | FrameRequestCallback) => void;
 
 if (hasRAF) {
   onNextFrame = (callback: FrameRequestCallback) => window.requestAnimationFrame(callback);

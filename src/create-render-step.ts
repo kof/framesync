@@ -1,11 +1,7 @@
-interface CallbackScheduler {
-  (callback: Function): void
-}
-
-interface RenderStep {
-  readonly schedule: CallbackScheduler,
-  readonly cancel: CallbackScheduler,
-  readonly process: Function
+export interface RenderStep {
+  readonly schedule: (callback: Function, immediate?: boolean) => void;
+  readonly cancel: (callback: Function) => void;
+  readonly process: Function;
 }
 
 export default function createRenderStep(startRenderLoop: Function): RenderStep {
@@ -16,16 +12,11 @@ export default function createRenderStep(startRenderLoop: Function): RenderStep 
    */
   let functionsToRun: Function[] = [];
   let functionsToRunNextFrame: Function[] = [];
+  let numThisFrame = 0;
+  let isProcessing = false;
+  let i = 0;
 
   return {
-    schedule: (callback: Function) => {
-      startRenderLoop();
-      // If this callback isn't already scheduled to run next frame
-      if (functionsToRunNextFrame.indexOf(callback) === -1) {
-        functionsToRunNextFrame.push(callback);
-      }
-    },
-
     cancel: (callback: Function) => {
       const indexOfCallback = functionsToRunNextFrame.indexOf(callback);
       if (indexOfCallback !== -1) {
@@ -34,6 +25,8 @@ export default function createRenderStep(startRenderLoop: Function): RenderStep 
     },
 
     process: () => {
+      isProcessing = true;
+
       // Swap this frame and next frame arrays to avoid GC
       [functionsToRun, functionsToRunNextFrame] = [functionsToRunNextFrame, functionsToRun];
 
@@ -41,10 +34,29 @@ export default function createRenderStep(startRenderLoop: Function): RenderStep 
       functionsToRunNextFrame.length = 0;
 
       // Execute all of this frame's functions
-      const numThisFrame = functionsToRun.length;
-      for (let i = 0; i < numThisFrame; i++) {
+      numThisFrame = functionsToRun.length;
+      for (i = 0; i < numThisFrame; i++) {
         functionsToRun[i]();
       }
-    }
+
+      isProcessing = false;
+    },
+
+    schedule: (callback: Function, immediate: boolean = false) => {
+      startRenderLoop();
+
+      const addToCurrentBuffer = immediate && isProcessing;
+      const buffer = addToCurrentBuffer ? functionsToRun : functionsToRunNextFrame;
+
+      // If this callback isn't already scheduled to run next frame
+      if (buffer.indexOf(callback) === -1) {
+        buffer.push(callback);
+
+        // If we're adding to the current buffer, update its size
+        if (addToCurrentBuffer) {
+          numThisFrame = functionsToRun.length;
+        }
+      }
+    },
   };
 }

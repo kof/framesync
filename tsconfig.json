@@ -12,6 +12,7 @@
     "outDir": "lib",
     "watch": false,
     "baseUrl": "src/",
+    "declaration": true,
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true
   },

@@ -1,17 +1,17 @@
-import onNextFrame from '../on-next-frame';
 import {
-  currentTime,
-  currentFrameTimestamp,
-  timeSinceLastFrame,
-  onFrameStart,
-  onFrameEnd,
-  onFrameRender,
-  onFrameUpdate,
   cancelOnFrameEnd,
   cancelOnFrameRender,
   cancelOnFrameStart,
-  cancelOnFrameUpdate
+  cancelOnFrameUpdate,
+  currentFrameTime,
+  currentTime,
+  onFrameEnd,
+  onFrameRender,
+  onFrameStart,
+  onFrameUpdate,
+  timeSinceLastFrame
 } from '../';
+import onNextFrame from '../on-next-frame';
 
 describe('onNextFrame', () => {
   it('fires callback on following frame', () => {
@@ -22,7 +22,7 @@ describe('onNextFrame', () => {
 describe('frameSchedulers', () => {
   it('fires callbacks in the correct order', () => {
     return new Promise((resolve: Function) => {
-      const order: Array<number> = [];
+      const order: number[] = [];
       onFrameStart(() => order.push(1));
       onFrameUpdate(() => order.push(2));
       onFrameRender(() => order.push(3));
@@ -41,6 +41,34 @@ describe('frameSchedulers', () => {
       onFrameStart(() => cancelOnFrameUpdate(onFire));
       onFrameEnd(() => {
         if (!hasFired) resolve();
+      });
+    });
+  });
+
+  it('fires callback on current frame if scheduled with `true` within the same step', () => {
+    return new Promise((resolve: Function, reject: Function) => {
+      let v = 0;
+      onFrameUpdate(() => {
+        const timestamp = currentFrameTime();
+        v++;
+        onFrameUpdate(() => {
+          v++;
+          currentFrameTime() !== timestamp ? reject() : undefined;
+        }, true);
+      });
+      onFrameEnd(() => {
+        (v === 2) ? resolve() : reject();
+      });
+    });
+  });
+
+  it('fires callback on next frame if scheduled with `true` outside the same step', () => {
+    return new Promise((resolve: Function, reject: Function) => {
+      let v = 0;
+      onFrameUpdate(() => v++);
+      onFrameUpdate(() => v++, true);
+      onFrameEnd(() => {
+        (v === 2) ? resolve() : reject();
       });
     });
   });

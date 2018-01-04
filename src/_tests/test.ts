@@ -72,4 +72,12 @@ describe('frameSchedulers', () => {
       });
     });
   });
+
+  it('uses default elapsed time if first fire', () => {
+    return new Promise((resolve: Function, reject: Function) => {
+      setTimeout(() => onFrameUpdate(() => {
+        timeSinceLastFrame() === 16.7 ? resolve() : reject();
+      }), 10);
+    });
+  });
 });

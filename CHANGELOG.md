@@ -2,6 +2,12 @@
 
 Framesync adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.6] 2018-01-04
+
+### Changed
+
+- Using previous frame duration as default duration (for instance between active cycles).
+
 ## [3.1.5] 2018-01-04
 
 ### Changed

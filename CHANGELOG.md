@@ -2,6 +2,12 @@
 
 Framesync adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.5] 2018-01-04
+
+### Changed
+
+- Cleaning polyfill.
+
 ## [3.1.4] 2018-01-04
 
 ### Changed

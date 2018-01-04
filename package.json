@@ -1,6 +1,6 @@
 {
   "name": "framesync",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "description": "A tiny frame scheduler for performantly batching reads and renders",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

@@ -12,7 +12,7 @@ export const currentTime = HAS_PERFORMANCE_NOW ? () => performance.now() : () =>
 let willRenderNextFrame: boolean = false;
 
 // Maximum permitted ms since last frame
-const MAX_ELAPSED: number = 20;
+const MAX_ELAPSED: number = 40;
 
 // Current framestamp
 let currentFramestamp: number = currentTime();
@@ -20,10 +20,11 @@ let currentFramestamp: number = currentTime();
 let elapsed: number = 0;
 
 // Factor to multiply `elapsed` by - 0.5 would be slow motion, 2 would be fast
-let dilation: number = 1;
+const dilation: number = 1;
 
 function startRenderLoop(): void {
   if (!willRenderNextFrame) {
+    currentFramestamp = currentTime();
     willRenderNextFrame = true;
     onNextFrame(processFrame);
   }

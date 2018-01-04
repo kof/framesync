@@ -2,6 +2,13 @@
 
 Framesync adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.4] 2018-01-04
+
+### Changed
+
+- Max permitted time elapsed is now 40ms to permit 30fps max.
+- When `startRenderLoop` is fired, and the loop is not active, we set a new `currentTime`.
+
 ## [3.1.3] 2017-11-08
 
 ### Fixed

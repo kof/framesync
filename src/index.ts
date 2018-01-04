@@ -7,7 +7,7 @@ import createRenderStep from './create-render-step';
   @return [timestamp]: Current UNIX timestamp
 */
 const HAS_PERFORMANCE_NOW = typeof performance !== 'undefined' && performance.now !== undefined;
-export const currentTime = HAS_PERFORMANCE_NOW ? performance.now : Date.now;
+export const currentTime = HAS_PERFORMANCE_NOW ? () => performance.now() : () => Date.now();
 
 let willRenderNextFrame = false;
 

@@ -6,7 +6,7 @@ const hasRAF = typeof window !== 'undefined' && window.requestAnimationFrame !==
 let prevTime = 0;
 
 const onNextFrame = hasRAF
-  ? window.requestAnimationFrame
+  ? (callback: FrameRequestCallback) => window.requestAnimationFrame(callback)
   : (callback: Function) => {
     const currentTime = Date.now();
     const timeToCall = Math.max(0, 16.7 - (currentTime - prevTime));

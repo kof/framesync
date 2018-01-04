@@ -2,6 +2,12 @@
 
 Framesync adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.7] 2018-01-04
+
+### Fixed
+
+- Fixing illegal invocation errors.
+
 ## [3.1.6] 2018-01-04
 
 ### Changed

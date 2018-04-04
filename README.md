@@ -1,4 +1,4 @@
-# Framesync
+# # <a href="https://popmotion.io/api/framesync"><img src="https://user-images.githubusercontent.com/7850794/38307669-5e7e3f88-380c-11e8-8c26-970c36801910.png" height="98" width="400" alt="Framesync" /></a>
 
 A tiny frame scheduler for performantly batching reads and renders.
 

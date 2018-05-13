@@ -3,9 +3,9 @@
   "version": "3.1.8",
   "description": "A Unity-inspired render loop for JavaScript",
   "main": "lib/index.js",
-  "module": "es/index.js",
-  "jsnext:main": "es/index.js",
   "types": "lib/index.d.ts",
+  "module": "dist/framesync.es.js",
+  "jsnext:main": "dist/framesync.es.js",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
@@ -14,6 +14,10 @@
     "measure": "gzip -c dist/framesync.min.js | wc -c",
     "prepublishOnly": "npm run lint && npm run build"
   },
+  "files": [
+    "lib",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Popmotion/framesync.git"

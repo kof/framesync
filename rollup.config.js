@@ -29,7 +29,7 @@ const umdProd = Object.assign({}, umd, {
 
 const es = Object.assign({}, config, {
   output: {
-    file: 'es/index.js',
+    file: 'dist/framesync.es.js',
     format: 'es'
   },
   plugins: [typescript(noDeclarationConfig)]

@@ -2,6 +2,12 @@
 
 Framesync adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.8] 2018-05-13
+
+### Added
+
+- Rollup support for outputting ES modules and UMD bundles.
+
 ## [3.1.7] 2018-01-04
 
 ### Fixed

@@ -1,24 +1,28 @@
 {
   "name": "framesync",
-  "version": "3.1.7",
-  "description": "A tiny frame scheduler for performantly batching reads and renders",
+  "version": "3.1.8",
+  "description": "A Unity-inspired render loop for JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "module": "dist/framesync.es.js",
+  "jsnext:main": "dist/framesync.es.js",
   "scripts": {
-    "watch": "tsc -w",
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
     "lint": "tslint -c tslint.json 'src/**/*.{ts}'",
     "test": "jest",
-    "prepublish": "npm run lint && tsc"
+    "measure": "gzip -c dist/framesync.min.js | wc -c",
+    "prepublishOnly": "npm run lint && npm run build"
   },
+  "files": [
+    "lib",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Popmotion/framesync.git"
   },
   "keywords": [
-    "popmotion",
     "animation",
     "raf"
   ],
@@ -30,6 +34,8 @@
   "homepage": "https://github.com/Popmotion/framesync#readme",
   "devDependencies": {
     "jest": "^20.0.4",
+    "rollup-plugin-typescript2": "^0.14.0",
+    "rollup-plugin-uglify": "^3.0.0",
     "ts-jest": "^20.0.10",
     "typescript": "^2.4.2"
   },
@@ -43,5 +49,10 @@
       ".(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "/_tests/.*\\.(ts|tsx|js)$"
+  },
+  "unpkg": "./dist/framesync.min.js",
+  "prettier": {
+    "parser": "typescript",
+    "singleQuote": true
   }
 }

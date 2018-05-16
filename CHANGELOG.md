@@ -2,6 +2,12 @@
 
 Framesync adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.9] 2018-05-16
+
+### Fixed
+
+- Fixing Rollup config.
+
 ## [3.1.8] 2018-05-13
 
 ### Added

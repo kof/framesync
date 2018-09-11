@@ -37,7 +37,7 @@ Framesync also exports some time-measurement methods:
 import {
   timeSinceLastFrame,
   onFrameStart,
-  cancelFrameStart
+  cancelOnFrameStart
 } from 'framesync';
 
 function logTimeSinceLastFrame() {
